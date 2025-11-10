@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Equinox RP Helper</title>
+	<link rel="stylesheet" href="./assets/css/style.css" defer />
+</head>
+<body class="empire">
+	<nav>
+		<button id="button-style-republic" aria-label="Republic view" title="Republic view"></button>
+		<button id="button-style-empire" aria-label="Empire view" title="Empire view"></button>
+	</nav>
+	<h1>Equinox RP Helper</h1>
+	<section id="text-section">
+		<div class="close-button">
+			<button type="button" class="button-small">-</button>
+		</div>
+		<h2 class="show-closed">Text Input</h2>
+		<div id="input">
+			<h2>Text Input</h2>
+			<textarea id="text-input" placeholder="Enter your long text here..."></textarea>
+		</div>
+		<div id="output">
+			<div>
+				<h2>Text Output</h2>
+			</div>
+			<div>
+				<textarea id="text-output" readonly="true" maxlength="255" placeholder="...and it will be split into chunks you can paste into SWTOR chat!"></textarea>
+			</div>
+			<div>
+				<div>
+					<button id="button-panel-back" type="button" class="button-small" disabled="true">&lt;</button>
+					<span id="output-tracker">0/0</span>
+					<button id="button-panel-forward" type="button" class="button-small" disabled="true">&gt;</button>
+				</div>
+				<button id="button-copy-output" type="button" disabled="true">Copy</button>
+			</div>
+		</div>
+	</section>
+	<section id="notes-section">
+		<div class="close-button">
+			<button type="button" class="button-small" aria-label="Hide or view section" title="Hide or view section">-</button>
+		</div>
+		<h2>Notes</h2>
+		<textarea id="notes" placeholder="Jot down any notes you want, and they will be here when you come back!"></textarea>
+	</section>
+	<section id="cheatsheets">
+		<h2>Cheatsheets</h2>
+		<div class="subsection">
+			<div class="close-button">
+				<button type="button" class="button-small" aria-label="Hide or view section" title="Hide or view section">-</button>
+			</div>
+			<h3 class="show-closed">Quick Reference</h3>
+			<div id="quick-ref">
+				<div>
+					<h3>Rank Table</h3>
+					<div id="rank-table">
+						<div>Rank Name</div>
+						<div>HP</div>
+						<div>Die</div>
+						<div>Bonus</div>
+
+						<div>Citizen/Initiate/Cadet/Acolyte/Adept/Private (E1 & E2)</div>
+						<div>2</div>
+						<div>d20</div>
+						<div>+0</div>
+
+						<div class="pub-only">Padawan/Sergeant/Specialist (E3)</div>
+						<div class="imp-only">Apprentice/Sergeant (E3)</div>
+						<div>3</div>
+						<div>d20</div>
+						<div>+2</div>
+
+						<div class="pub-only">Knight/Lieutenant (O1)</div>
+						<div class="imp-only">Lord/Lieutenant (O1)</div>
+						<div>4</div>
+						<div>d25</div>
+						<div>+5</div>
+
+						<div class="pub-only">Knight I/Captain (O2)</div>
+						<div class="imp-only">Lord I/Captain (O2)</div>
+						<div>4</div>
+						<div>d25</div>
+						<div>+7</div>
+
+						<div class="pub-only">Knight II/Colonel (O3)</div>
+						<div class="imp-only">Lord II/Colonel (O3)</div>
+						<div>4</div>
+						<div>d25</div>
+						<div>+9</div>
+
+						<div class="pub-only">Master/General (O4)</div>
+						<div class="imp-only">Darth/Moff (O4)</div>
+						<div>5</div>
+						<div>d30</div>
+						<div>+15</div>
+
+						<div class="pub-only">Councilor/Senator (O5)</div>
+						<div class="imp-only">Grand Moff (O5)</div>
+						<div>6</div>
+						<div>d40</div>
+						<div>+20</div>
+
+						<div>High Councilor (O6)</div>
+						<div>7</div>
+						<div>d40</div>
+						<div>+22</div>
+
+						<div class="imp-only">Wrath (O7)</div>
+						<div class="imp-only">7</div>
+						<div class="imp-only">d45</div>
+						<div class="imp-only">+25</div>
+
+						<div class="imp-only">Voice (O8)</div>
+						<div class="imp-only">10</div>
+						<div class="imp-only">d50</div>
+						<div class="imp-only">+30</div>
+
+						<div class="imp-only">Emperor (GM)</div>
+						<div class="imp-only">15</div>
+						<div class="imp-only">d65</div>
+						<div class="imp-only">+35</div>
+					</div>
+				</div>
+				<div id="code-holder">
+					<div>
+						<h3>Jedi Code</h3>
+						<div id="code-jedi">
+							<p>There is no emotion, there is peace.</p>
+							<p>There is no ignorance, there is knowledge.</p>
+							<p>There is no passion, there is serenity.</p>
+							<p>There is no chaos, there is harmony.</p>
+							<p>There is no death, there is the Force.</p>
+						</div>
+					</div>
+					<div>
+						<h3>Sith Code</h3>
+						<div id="code-sith">
+							<p>Peace is a lie.  There is only Passion.</p>
+							<p>Through Passion I gain Strength.</p>
+							<p>Through Strength, I gain Power.</p>
+							<p>Through Power, I gain Victory.</p>
+							<p>Through Victory my chains are Broken.</p>
+							<p>The Force shall free me.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="subsection">
+			<div class="close-button">
+				<button type="button" class="button-small" aria-label="Hide or view section" title="Hide or view section">-</button>
+			</div>
+			<h3><a href="https://swtorista.com/emotes/" target="_blank" title="Emote List">Emotes</a></h3>
+			<div id="emote-display">
+				<div id="emote-header" class="flex-me">
+					<div><strong>Emote Types:</strong></div>
+					<div id="button-emote-free" class="emote-free">Free</div>
+					<div id="button-emote-sub" class="emote-sub">Subscriber</div>
+					<div id="button-emote-market" class="emote-market">Cartel Market</div>
+					<div id="button-emote-unlocked" class="emote-unlocked">Unlockable</div>
+				</div>
+				<!-- https://swtorista.com/emotes/ -->
+				<div id="emote-table">
+					<div class="emote-free">
+						<div>/accuse</div>
+						<div>Accuse someone.</div>
+					</div>
+					<div class="emote-unlocked">
+						<div>/agent</div>
+						<div>Spin a couple of blades.</div>
+					</div>
+					<div class="emote-market">
+						<div>/aircontrol</div>
+						<div>???</div>
+					</div>
+					<div class="emote-market">
+						<div>/airdrums</div>
+						<div>Play imaginary drums.</div>
+					</div>
+					<div class="emote-market">
+						<div>/airpunch</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/angry</div>
+						<div>Tremble with anger.</div>
+					</div>
+					<div class="emote-market">
+						<div>/angrydance</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/apologize</div>
+						<div>Say you're sorry (with voice line).</div>
+					</div>
+					<div class="emote-sub">
+						<div>/applaud</div>
+						<div>Clap for someone.</div>
+					</div>
+					<div class="emote-market">
+						<div>/armscrossed</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/attacktarget</div>
+						<div>Call for an attack.</div>
+					</div>
+					<div class="emote-market">
+						<div>/backflip</div>
+						<div>???</div>
+					</div>
+					<div class="emote-market">
+						<div>/battleplan</div>
+						<div>???</div>
+					</div>
+					<div class="emote-market">
+						<div>/beachparty</div>
+						<div>???</div>
+					</div>
+					<div class="emote-market">
+						<div>/beatchest</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/beckon</div>
+						<div>Beckon to someone.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/beg</div>
+						<div>Plead with someone.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/belch</div>
+						<div>Belch.</div>
+					</div>
+					<div class="emote-market">
+						<div>/beltcheck</div>
+						<div>???</div>
+					</div>
+					<div class="emote-market">
+						<div>/bicepkiss</div>
+						<div>???</div>
+					</div>
+					<div class="emote-unlocked">
+						<div>/binoculars</div>
+						<div>Survey the area with optics.</div>
+					</div>
+					<div class="emote-free">
+						<div>/blink</div>
+						<div>Blink.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/blow</div>
+						<div>Blow a kiss.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/blush</div>
+						<div>Act shyly.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/bonk</div>
+						<div>Bonk someone on the head.</div>
+					</div>
+					<div class="emote-market">
+						<div>/boogie</div>
+						<div>???</div>
+					</div>
+					<div class="emote-market">
+						<div>/boohoo</div>
+						<div>???</div>
+					</div>
+					<div class="emote-market">
+						<div>/bop</div>
+						<div>???</div>
+					</div>
+					<div class="emote-free">
+						<div>/bored</div>
+						<div>Become bored.</div>
+					</div>
+					<div class="emote-market">
+						<div>/bottlebreak</div>
+						<div>???</div>
+					</div>
+					<div class="emote-market">
+						<div>/bound</div>
+						<div>???</div>
+					</div>
+					<div class="emote-unlocked">
+						<div>/bountyhunter</div>
+						<div>Quick rocket jump.</div>
+					</div>
+					<div class="emote-free">
+						<div>/bow</div>
+						<div>Bow to someone.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/bowformal</div>
+						<div>Bow to someone formally.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/bowrespect</div>
+						<div>Bow to someone with great respect.</div>
+					</div>
+					<div class="emote-market">
+						<div>/boxing</div>
+						<div>???</div>
+					</div>
+					<div class="emote-free">
+						<div>/brb</div>
+						<div>Be right back!</div>
+					</div>
+					<div class="emote-sub">
+						<div>/burp</div>
+						<div>Burp.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/cackle</div>
+						<div>Laugh uncontrollably.</div>
+					</div>
+					<div class="emote-free">
+						<div>/calm</div>
+						<div>Calm someone's tits.</div>
+					</div>
+					<div class="emote-market">
+						<div>/cartwheel</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/catchup</div>
+						<div>Call for others to catch up.</div>
+					</div>
+					<div class="emote-free">
+						<div>/chair</div>
+						<div>Sit, as in a chair.</div>
+					</div>
+					<div class="emote-market">
+						<div>/chair1</div>
+						<div>???</div>
+					</div>
+					<div class="emote-market">
+						<div>/chair2</div>
+						<div>???</div>
+					</div>
+					<div class="emote-market">
+						<div>/chair3</div>
+						<div>???</div>
+					</div>
+					<div class="emote-market">
+						<div>/chair4</div>
+						<div>???</div>
+					</div>
+					<div class="emote-market">
+						<div>/chair5</div>
+						<div>???</div>
+					</div>
+					<div class="emote-market">
+						<div>/chair6</div>
+						<div>???</div>
+					</div>
+					<div class="emote-market">
+						<div>/chair9</div>
+						<div>???</div>
+					</div>
+					<div class="emote-market">
+						<div>/chair10</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/cheer</div>
+						<div>Cheer for someone.</div>
+					</div>
+					<div class="emote-market">
+						<div>/cheer2</div>
+						<div>???</div>
+					</div>
+					<div class="emote-market">
+						<div>/chicken</div>
+						<div>???</div>
+					</div>
+					<div class="emote-market">
+						<div>/child</div>
+						<div>???</div>
+					</div>
+					<div class="emote-market">
+						<div>/chilly</div>
+						<div>???</div>
+					</div>
+					<div class="emote-free">
+						<div>/clap</div>
+						<div>Clap your hands.</div>
+					</div>
+					<div class="emote-market">
+						<div>/clawbirdkick</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/clubdance</div>
+						<div>Sensual dance.</div>
+					</div>
+					<div class="emote-free">
+						<div>/comfort</div>
+						<div>Show emotional support.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/commend</div>
+						<div>Praise someone (with voice line).</div>
+					</div>
+					<div class="emote-sub">
+						<div>/confused</div>
+						<div>Look confused (no animation).</div>
+					</div>
+					<div class="emote-free">
+						<div>/congratulate</div>
+						<div>Congratulate someone (with voice line).</div>
+					</div>
+					<div class="emote-free">
+						<div>/console</div>
+						<div>Reassure someone.</div>
+					</div>
+					<div class="emote-unlocked">
+						<div>/consular</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/cough</div>
+						<div>Cough.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/cower</div>
+						<div>Show fear (no animation).</div>
+					</div>
+					<div class="emote-market">
+						<div>/crazytalk</div>
+						<div>???</div>
+					</div>
+					<div class="emote-free">
+						<div>/cringe</div>
+						<div>Cringe.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/crossarms</div>
+						<div>Wait impatiently (no animation).</div>
+					</div>
+					<div class="emote-sub">
+						<div>/cry</div>
+						<div>Show some tears.</div>
+					</div>
+					<div class="emote-free">
+						<div>/dance</div>
+						<div>Dance!</div>
+					</div>
+					<div class="emote-unlocked">
+						<div>/datapad</div>
+						<div>Type some quick notes.</div>
+					</div>
+					<div class="emote-market">
+						<div>/dejarik</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/disappoint</div>
+						<div>Act frustrated.</div>
+					</div>
+					<div class="emote-market">
+						<div>/dodge</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/doh</div>
+						<div>Disbelief.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/done</div>
+						<div>Dust off your hands.</div>
+					</div>
+					<div class="emote-market">
+						<div>/doubleguns</div>
+						<div>???</div>
+					</div>
+					<div class="emote-unlocked">
+						<div>/doublelasers</div>
+						<div>Show fingerguns.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/doublethumbs</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/drink</div>
+						<div>Make a toast.</div>
+					</div>
+					<div class="emote-market">
+						<div>/droid</div>
+						<div>???</div>
+					</div>
+					<div class="emote-market">
+						<div>/dud</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/eat</div>
+						<div>Nom on a space onion.</div>
+					</div>
+					<div class="emote-market">
+						<div>/empoweredshuffle</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/excited</div>
+						<div>Fired up.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/facepalm</div>
+						<div>Sad disbelief.</div>
+					</div>
+					<div class="emote-market">
+						<div>/faint</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/farewell</div>
+						<div>Bid farewell (with voice line).</div>
+					</div>
+					<div class="emote-sub">
+						<div>/fear</div>
+						<div>Be afraid.</div>
+					</div>
+					<div class="emote-market">
+						<div>/fever</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/fidget</div>
+						<div>Shuffle impatiently.</div>
+					</div>
+					<div class="emote-market">
+						<div>/fistpump</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/flagdown</div>
+						<div>Wave your hand wildly.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/flap</div>
+						<div>Wave both hands wildly.</div>
+					</div>
+					<div class="emote-free">
+						<div>/flee</div>
+						<div>Run away!</div>
+					</div>
+					<div class="emote-sub">
+						<div>/flex</div>
+						<div>Show off your muscles.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/flirt</div>
+						<div>Strike a sexy pose.</div>
+					</div>
+					<div class="emote-market">
+						<div>/flourish</div>
+						<div>???</div>
+					</div>
+					<div class="emote-free">
+						<div>/followme</div>
+						<div>Follow me (with voice line).</div>
+					</div>
+					<div class="emote-market">
+						<div>/freezing</div>
+						<div>???</div>
+					</div>
+					<div class="emote-market">
+						<div>/fresh</div>
+						<div>???</div>
+					</div>
+					<div class="emote-free">
+						<div>/frown</div>
+						<div>Make a sad face.</div>
+					</div>
+					<div class="emote-market">
+						<div>/funky</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/getdown</div>
+						<div>Dance casually.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/giggle</div>
+						<div>A small laugh.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/giveup</div>
+						<div>Raise your hands in surrender.</div>
+					</div>
+					<div class="emote-free">
+						<div>/glare</div>
+						<div>Show contempt.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/gloat</div>
+						<div>Clench your fist.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/golfclap</div>
+						<div>Clap your hands politely.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/goodbye</div>
+						<div>Say goodbye (with voice line).</div>
+					</div>
+					<div class="emote-free">
+						<div>/goodjob</div>
+						<div>Commend someone (with voice line).</div>
+					</div>
+					<div class="emote-sub">
+						<div>/greet</div>
+						<div>Say hello (with voice line).</div>
+					</div>
+					<div class="emote-free">
+						<div>/grin</div>
+						<div>Grin.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/groan</div>
+						<div>Groan (no animation).</div>
+					</div>
+					<div class="emote-market">
+						<div>/groove</div>
+						<div>???</div>
+					</div>
+					<div class="emote-unlocked">
+						<div>/groove2</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/grovel</div>
+						<div>Beg at someone's feet.</div>
+					</div>
+					<div class="emote-market">
+						<div>/handstandheelclick</div>
+						<div>???</div>
+					</div>
+					<div class="emote-free">
+						<div>/happy</div>
+						<div>Express happiness.</div>
+					</div>
+					<div class="emote-market">
+						<div>/headbob</div>
+						<div>???</div>
+					</div>
+					<div class="emote-free">
+						<div>/healme</div>
+						<div>I need healing (with voice line).</div>
+					</div>
+					<div class="emote-market">
+						<div>/heelclick</div>
+						<div>???</div>
+					</div>
+					<div class="emote-free">
+						<div>/hello</div>
+						<div>Say hello (with voice line).</div>
+					</div>
+					<div class="emote-sub">
+						<div>/helpme</div>
+						<div>Call for help (with voice line).</div>
+					</div>
+					<div class="emote-sub">
+						<div>/hey</div>
+						<div>Wave a hand for attention.</div>
+					</div>
+					<div class="emote-market">
+						<div>/hipdip</div>
+						<div>???</div>
+					</div>
+					<div class="emote-unlocked">
+						<div>/holocom</div>
+						<div>Talk on a holocommunicator.</div>
+					</div>
+					<div class="emote-market">
+						<div>/holohoop</div>
+						<div>???</div>
+					</div>
+					<div class="emote-market">
+						<div>/holohoop2</div>
+						<div>???</div>
+					</div>
+					<div class="emote-free">
+						<div>/hug</div>
+						<div>Hug or be hugged.</div>
+					</div>
+					<div class="emote-free">
+						<div>/hungry</div>
+						<div>Need food badly!</div>
+					</div>
+					<div class="emote-sub">
+						<div>/impatient</div>
+						<div>Same as /fidget.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/incoming</div>
+						<div>Duck and cover!</div>
+					</div>
+					<div class="emote-unlocked">
+						<div>/inquisitor</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/insult</div>
+						<div>Make a rude gesture.</div>
+					</div>
+					<div class="emote-market">
+						<div>/intimidate</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/introduce</div>
+						<div>Introduce yourself (with voice line).</div>
+					</div>
+					<div class="emote-sub">
+						<div>/ironfist</div>
+						<div>Sarcastic clapping.</div>
+					</div>
+					<div class="emote-market">
+						<div>/jig</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/joke</div>
+						<div>Tell a jolly jest.</div>
+					</div>
+					<div class="emote-market">
+						<div>/joy</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/kiss</div>
+						<div>Blow a kiss.</div>
+					</div>
+					<div class="emote-market">
+						<div>/kloo</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/kneel</div>
+						<div>Kneel.</div>
+					</div>
+					<div class="emote-unlocked">
+						<div>/knight</div>
+						<div>???</div>
+					</div>
+					<div class="emote-free">
+						<div>/laugh</div>
+						<div>Laugh.</div>
+					</div>
+					<div class="emote-market">
+						<div>/lepihop</div>
+						<div>???</div>
+					</div>
+					<div class="emote-free">
+						<div>/listen</div>
+						<div>Listen intently.</div>
+					</div>
+					<div class="emote-free">
+						<div>/look</div>
+						<div>Look.</div>
+					</div>
+					<div class="emote-free">
+						<div>/love</div>
+						<div>Love someone.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/mad</div>
+						<div>Same as /anger.</div>
+					</div>
+					<div class="emote-unlocked">
+						<div>/map</div>
+						<div>Play on your iPad.</div>
+					</div>
+					<div class="emote-free">
+						<div>/meditate</div>
+						<div>Sit and meditate (lotus position).</div>
+					</div>
+					<div class="emote-market">
+						<div>/menace</div>
+						<div>???</div>
+					</div>
+					<div class="emote-market">
+						<div>/mindprisonspin</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/mock</div>
+						<div>Laugh in superiority.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/mourn</div>
+						<div>Have a sad time.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/nerfherder</div>
+						<div>Insult someone.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/no</div>
+						<div>Decline (with voice line).</div>
+					</div>
+					<div class="emote-market">
+						<div>/nobones</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/nod</div>
+						<div>Nod to someone (with voice line).</div>
+					</div>
+					<div class="emote-market">
+						<div>/nodoff</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/notdroids</div>
+						<div title="This is the best Battlestar Galactica game.">Pull a Vulcan Mind Trick.</div>
+					</div>
+					<div class="emote-free">
+						<div>/observe</div>
+						<div>Gaze at something.</div>
+					</div>
+					<div class="emote-market">
+						<div>/omg</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/openfire</div>
+						<div>Call your shot.</div>
+					</div>
+					<div class="emote-free">
+						<div>/oor</div>
+						<div>Low resources!</div>
+					</div>
+					<div class="emote-market">
+						<div>/outofbreath</div>
+						<div>???</div>
+					</div>
+					<div class="emote-unlocked">
+						<div>/overeat</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/overthere</div>
+						<div>Point behind yourself.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/panic</div>
+						<div>Have a little freak out.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/paranoid</div>
+						<div>Look all over.</div>
+					</div>
+					<div class="emote-market">
+						<div>/pbj</div>
+						<div>???</div>
+					</div>
+					<div class="emote-free">
+						<div>/peer</div>
+						<div>Peer at someone (no animation).</div>
+					</div>
+					<div class="emote-market">
+						<div>/perform</div>
+						<div>???</div>
+					</div>
+					<div class="emote-market">
+						<div>/pickaxe</div>
+						<div>???</div>
+					</div>
+					<div class="emote-free">
+						<div>/pity</div>
+						<div>Show pity.</div>
+					</div>
+					<div class="emote-free">
+						<div>/point</div>
+						<div>Point at someone.</div>
+					</div>
+					<div class="emote-market">
+						<div>/pointlaugh</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/poke</div>
+						<div>Jab someone with your finger.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/ponder</div>
+						<div>Have a think.</div>
+					</div>
+					<div class="emote-market">
+						<div>/possessed</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/praise</div>
+						<div>Praise someone (with voice line).</div>
+					</div>
+					<div class="emote-market">
+						<div>/punchdance</div>
+						<div>???</div>
+					</div>
+					<div class="emote-market">
+						<div>/punt</div>
+						<div>???</div>
+					</div>
+					<div class="emote-free">
+						<div>/raise</div>
+						<div>Raise a hand.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/raving</div>
+						<div>Raving mad.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/ready</div>
+						<div>???</div>
+					</div>
+					<div class="emote-market">
+						<div>/recline</div>
+						<div>???</div>
+					</div>
+					<div class="emote-market">
+						<div>/restless</div>
+						<div>???</div>
+					</div>
+					<div class="emote-market">
+						<div>/romanceshuffle</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/rude</div>
+						<div>Same as /insult.</div>
+					</div>
+					<div class="emote-market">
+						<div>/runningman</div>
+						<div>???</div>
+					</div>
+					<div class="emote-market">
+						<div>/salsa</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/salute</div>
+						<div>Salute.</div>
+					</div>
+					<div class="emote-unlocked">
+						<div>/scangreen</div>
+						<div>Biological scanning device.</div>
+					</div>
+					<div class="emote-unlocked">
+						<div>/scanred</div>
+						<div>Technical scanning device.</div>
+					</div>
+					<div class="emote-market">
+						<div>/search</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/seduce</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/shakefist</div>
+						<div>Same as /anger.</div>
+					</div>
+					<div class="emote-free">
+						<div>/shiver</div>
+						<div>Shiver.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/shock</div>
+						<div>Surprised.</div>
+					</div>
+					<div class="emote-market">
+						<div>/shovel</div>
+						<div>???</div>
+					</div>
+					<div class="emote-free">
+						<div>/shrug</div>
+						<div>Shrug, I guess.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/shy</div>
+						<div>Smile shyly.</div>
+					</div>
+					<div class="emote-free">
+						<div>/sigh</div>
+						<div>Sigh.</div>
+					</div>
+					<div class="emote-market">
+						<div>/sing</div>
+						<div>Sing???</div>
+					</div>
+					<div class="emote-market">
+						<div>/sinister</div>
+						<div>???</div>
+					</div>
+					<div class="emote-free">
+						<div>/sit</div>
+						<div>Sit in place.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/slap</div>
+						<div>Backhand someone.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/sleep</div>
+						<div>Lie down for a snooze.</div>
+					</div>
+					<div class="emote-market">
+						<div>/slowclap</div>
+						<div>???</div>
+					</div>
+					<div class="emote-free">
+						<div>/smile</div>
+						<div>Put on a happy face.</div>
+					</div>
+					<div class="emote-unlocked">
+						<div>/smuggler</div>
+						<div>Smoke bomb!</div>
+					</div>
+					<div class="emote-market">
+						<div>/smugglershuffle</div>
+						<div>???</div>
+					</div>
+					<div class="emote-free">
+						<div>/snicker</div>
+						<div>Snicker at someone.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/sorry</div>
+						<div>Apologize (with voice line).</div>
+					</div>
+					<div class="emote-market">
+						<div>/spike</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/spit</div>
+						<div>Spit.</div>
+					</div>
+					<div class="emote-free">
+						<div>/stare</div>
+						<div>Stare someone down.</div>
+					</div>
+					<div class="emote-market">
+						<div>/starslide</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/stretch</div>
+						<div>Stretch your muscles.</div>
+					</div>
+					<div class="emote-market">
+						<div>/style</div>
+						<div>???</div>
+					</div>
+					<div class="emote-market">
+						<div>/superflex</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/surprised</div>
+						<div>Surprised!</div>
+					</div>
+					<div class="emote-market">
+						<div>/sweep</div>
+						<div>???</div>
+					</div>
+					<div class="emote-market">
+						<div>/swing</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/talk</div>
+						<div>Chat with someone.</div>
+					</div>
+					<div class="emote-free">
+						<div>/tap</div>
+						<div>Tap your foot.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/taunt</div>
+						<div>Threaten to cut a throat.</div>
+					</div>
+					<div class="emote-free">
+						<div>/tease</div>
+						<div>Laugh at someone.</div>
+					</div>
+					<div class="emote-free">
+						<div>/thank</div>
+						<div>Thank someone (with voice line).</div>
+					</div>
+					<div class="emote-market">
+						<div>/think</div>
+						<div>???</div>
+					</div>
+					<div class="emote-free">
+						<div>/thirsty</div>
+						<div>Look thirsty.</div>
+					</div>
+					<div class="emote-market">
+						<div>/thrash</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/threaten</div>
+						<div>Punch your palm.</div>
+					</div>
+					<div class="emote-free">
+						<div>/thumbsdown</div>
+						<div>Give someone a thumbs down.</div>
+					</div>
+					<div class="emote-free">
+						<div>/thumbsup</div>
+						<div>Give someone a thumbs up.</div>
+					</div>
+					<div class="emote-free">
+						<div>/tickle</div>
+						<div>Tickle someone.</div>
+					</div>
+					<div class="emote-market">
+						<div>/tihaar</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/tired</div>
+						<div>Sigh (with voice line).</div>
+					</div>
+					<div class="emote-unlocked">
+						<div>/toast</div>
+						<div>???</div>
+					</div>
+					<div class="emote-market">
+						<div>/toetouch</div>
+						<div>???</div>
+					</div>
+					<div class="emote-market">
+						<div>/traditional</div>
+						<div>???</div>
+					</div>
+					<div class="emote-unlocked">
+						<div>/trooper</div>
+						<div>Salute w/ an energy shield?</div>
+					</div>
+					<div class="emote-unlocked">
+						<div>/typing</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/victory</div>
+						<div>Pump your fist.</div>
+					</div>
+					<div class="emote-market">
+						<div>/victorywave</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/wait</div>
+						<div>Tell someone to wait.</div>
+					</div>
+					<div class="emote-market">
+						<div>/waltz</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/warmup</div>
+						<div>Limber up.</div>
+					</div>
+					<div class="emote-unlocked">
+						<div>/warrior</div>
+						<div>???</div>
+					</div>
+					<div class="emote-free">
+						<div>/wave</div>
+						<div>Wave to someone.</div>
+					</div>
+					<div class="emote-sub">
+						<div>/welcome</div>
+						<div>Welcome with arms wide.</div>
+					</div>
+					<div class="emote-unlocked">
+						<div>/weld</div>
+						<div>Make repairs.</div>
+					</div>
+					<div class="emote-market">
+						<div>/whatup</div>
+						<div>???</div>
+					</div>
+					<div class="emote-market">
+						<div>/whatup2</div>
+						<div>???</div>
+					</div>
+					<div class="emote-free">
+						<div>/whine</div>
+						<div>Whine to someone.</div>
+					</div>
+					<div class="emote-free">
+						<div>/whistle</div>
+						<div>Whistle.</div>
+					</div>
+					<div class="emote-free">
+						<div>/wicked</div>
+						<div>Wolfish smile.</div>
+					</div>
+					<div class="emote-free">
+						<div>/wink</div>
+						<div>Wink coyly.</div>
+					</div>
+					<div class="emote-market">
+						<div>/woohoo</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/woot</div>
+						<div>Same as /cheer.</div>
+					</div>
+					<div class="emote-market">
+						<div>/worthy</div>
+						<div>???</div>
+					</div>
+					<div class="emote-market">
+						<div>/xantha</div>
+						<div>???</div>
+					</div>
+					<div class="emote-sub">
+						<div>/yawn</div>
+						<div>Yawn and stretch.</div>
+					</div>
+					<div class="emote-free">
+						<div>/yes</div>
+						<div>Agree with someone (with voice line).</div>
+					</div>
+					<div class="emote-market">
+						<div>/yippee</div>
+						<div>???</div>
+					</div>
+					<h4>Moods</h4>
+					<div class="emote-free">
+						<div>/alarmed</div>
+						<div>Slightly frightful.</div>
+					</div>
+					<div class="emote-market">
+						<div>/angered</div>
+						<div>Angery.</div>
+					</div>
+					<div class="emote-free">
+						<div>/annoyed</div>
+						<div>Unpleasantly upset.</div>
+					</div>
+					<div class="emote-free">
+						<div>/astounded</div>
+						<div>Dumbfounded.</div>
+					</div>
+					<div class="emote-free">
+						<div>/awed</div>
+						<div>Awestruck.</div>
+					</div>
+					<div class="emote-free">
+						<div>/cheery</div>
+						<div>In a good mood.</div>
+					</div>
+					<div class="emote-market">
+						<div>/cobalt</div>
+						<div>Cobalt Durasteel, aka <em>BLUE STEEL</em>.</div>
+					</div>
+					<div class="emote-market">
+						<div>/creepy</div>
+						<div>Leering unpleasantly.</div>
+					</div>
+					<div class="emote-market">
+						<div>/crying</div>
+						<div>Weeping.</div>
+					</div>
+					<div class="emote-free">
+						<div>/dejected</div>
+						<div>Bummed out.</div>
+					</div>
+					<div class="emote-free">
+						<div>/depressed</div>
+						<div>Sad and lethargic.</div>
+					</div>
+					<div class="emote-free">
+						<div>/discomforted</div>
+						<div>Displeased.</div>
+					</div>
+					<div class="emote-market">
+						<div>/disdained</div>
+						<div>Disgusted.</div>
+					</div>
+					<div class="emote-free">
+						<div>/eager</div>
+						<div>A little too happy.</div>
+					</div>
+					<div class="emote-market">
+						<div>/ecstatic</div>
+						<div>Very pleased.</div>
+					</div>
+					<div class="emote-market">
+						<div>/enraged</div>
+						<div>Glaring in anger.</div>
+					</div>
+					<div class="emote-market">
+						<div>/fearful</div>
+						<div>Scared.</div>
+					</div>
+					<div class="emote-free">
+						<div>/flattered</div>
+						<div>Cocky and confident.</div>
+					</div>
+					<div class="emote-free">
+						<div>/frustrated</div>
+						<div>Angry and impatient.</div>
+					</div>
+					<div class="emote-market">
+						<div>/furious</div>
+						<div>Unhinged with anger.</div>
+					</div>
+					<div class="emote-market">
+						<div>/goofy</div>
+						<div>Clowning around.</div>
+					</div>
+					<div class="emote-free">
+						<div>/hurt</div>
+						<div>Wincing.</div>
+					</div>
+					<div class="emote-market">
+						<div>/jawaface</div>
+						<div>Making a funny face.</div>
+					</div>
+					<div class="emote-free">
+						<div>/joyful</div>
+						<div>Happy.</div>
+					</div>
+					<div class="emote-free">
+						<div>/meditative</div>
+						<div>Serene contemplation.</div>
+					</div>
+					<div class="emote-free">
+						<div>/mournful</div>
+						<div>Sad and mopey.</div>
+					</div>
+					<div class="emote-free">
+						<div>/neutral</div>
+						<div>Default mood.</div>
+					</div>
+					<div class="emote-market">
+						<div>/outraged</div>
+						<div>Shocked and upset.</div>
+					</div>
+					<div class="emote-market">
+						<div>/pained</div>
+						<div>Wincing.</div>
+					</div>
+					<div class="emote-market">
+						<div>/pout</div>
+						<div>Petulant.</div>
+					</div>
+					<div class="emote-free">
+						<div>/saddened</div>
+						<div>Sad.</div>
+					</div>
+					<div class="emote-free">
+						<div>/scowling</div>
+						<div>Unhappy.</div>
+					</div>
+					<div class="emote-market">
+						<div>/sly</div>
+						<div>Shifty.</div>
+					</div>
+					<div class="emote-market">
+						<div>/snide</div>
+						<div>Unimpressed.</div>
+					</div>
+					<div class="emote-free">
+						<div>/stunned</div>
+						<div>Shocked.</div>
+					</div>
+					<div class="emote-market">
+						<div>/terrified</div>
+						<div>Very scared.</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<footer>Brought to you by <a href="https://leirana.carrd.co/" target="_blank"><strong>Leirana</strong></a></footer>
+	<script type="text/javascript" src="assets/js/script.js"></script>
+</body>
+</html>
