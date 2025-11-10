@@ -21,7 +21,7 @@ const outputTracker = document.getElementById("output-tracker");
 const notesField = document.getElementById("notes");
 const emoteSection = document.getElementById("emote-display");
 
-let docStyle = localStorage.getItem(styleStorageToken);
+let docStyle = localStorage.getItem(styleStorageToken) || "empire";
 let sectionStatus = localStorage.getItem(sectionStorageToken) || 0;
 let emoteHidden = JSON.parse(localStorage.getItem(emoteStorageToken)) || [];
 
@@ -190,7 +190,7 @@ function toggleEmoteType(emoteType) {
 	localStorage.setItem(emoteStorageToken, JSON.stringify(emoteHidden));
 }
 
-btnStyleRepublic.addEventListener("click", () => { setDocStyle("") });
+btnStyleRepublic.addEventListener("click", () => { setDocStyle("republic") });
 btnStyleEmpire.addEventListener("click", () => { setDocStyle("empire") });
 
 inputText.addEventListener("change", processInput);
