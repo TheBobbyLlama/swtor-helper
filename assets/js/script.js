@@ -133,6 +133,12 @@ function setDocStyle(newStyle) {
 	docStyle = newStyle;
 	document.body.className = newStyle;
 	localStorage.setItem(styleStorageToken, newStyle);
+
+	if (newStyle === "empire") {
+		document.title = "Imperial Equinox RP Helper";
+	} else {
+		document.title = "Republic Equinox RP Helper";
+	}
 }
 
 function initializeSections() {
