@@ -98,7 +98,7 @@ function formatInputText(target) {
 		}
 
 		let start = 0;
-		let end = start + 253 - textPrefix.length;
+		let end = start + 255 - connectors[connectorType][0].length - textPrefix.length;
 
 		// Loop to break apart input text...
 		while (end < inputMe.length - 1) {
@@ -107,7 +107,7 @@ function formatInputText(target) {
 				end--;
 
 				if (end === start) {
-					end = start + 253 - connectors[connectorType][0].length - textPrefix.length;
+					end = start + 255 - 2 * connectors[connectorType][0].length - textPrefix.length;
 					break;
 				}
 			}
@@ -121,7 +121,7 @@ function formatInputText(target) {
 				start++;
 			}
 
-			end = start + 253 - connectors[connectorType][0].length - textPrefix.length;
+			end = start + 255 - 2 * connectors[connectorType][0].length - textPrefix.length;
 		}
 
 		// Finally, grab the last piece.
@@ -136,10 +136,6 @@ function formatInputText(target) {
 		outputTracker.innerHTML = "0/0";
 		outputText.value = "";
 	}
-}
-
-function processInput(e) {
-	formatInputText(e.target);
 }
 
 function setDocStyle(newStyle) {
