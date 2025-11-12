@@ -82,6 +82,10 @@ h1 {
 	text-shadow: 0px 0px 5px #43cef7;
 }
 
+label {
+	user-select: none;
+}
+
 li {
 	margin-left: 24px;
 }
@@ -156,19 +160,23 @@ textarea {
 	width: 100%;
 }
 
+/* Output textarea container */
 #output > *:nth-child(2) {
 	flex-basis: 100%;
 }
 
+/* Output controls */
 #output > *:last-child {
 	align-items: center;
 	display: flex;
+	gap: 40px;
 	justify-content: center;
 	padding-top: 20px;
+	user-select: none;
 }
 
-#output > *:last-child > * {
-	margin: 0 20px;
+#connector-options {
+	height: 1.25rem;
 }
 
 #output-tracker {

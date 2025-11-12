@@ -1,4 +1,5 @@
 const styleStorageToken = "SWTOR_Style";
+const connectorStorageToken = "SWTOR_Connector";
 const noteStorageToken = "SWTOR_Notes";
 const sectionStorageToken = "SWTOR_Sections";
 const emoteStorageToken = "SWTOR_Emotes";
@@ -8,6 +9,7 @@ const outputText = document.getElementById("text-output");
 
 const btnStyleRepublic = document.getElementById("button-style-republic");
 const btnStyleEmpire = document.getElementById("button-style-empire");
+const selConnector = document.getElementById("connector-options");
 const btnPanelBack = document.getElementById("button-panel-back");
 const btnPanelForward = document.getElementById("button-panel-forward");
 const btnCopyOutput = document.getElementById("button-copy-output");
@@ -21,7 +23,14 @@ const outputTracker = document.getElementById("output-tracker");
 const notesField = document.getElementById("notes");
 const emoteSection = document.getElementById("emote-display");
 
+const connectors = [
+	[ "+ ", " +" ],
+	[ "> ", " >" ],
+	[ "|| ", " ||" ]
+];
+
 let docStyle = localStorage.getItem(styleStorageToken) || "empire";
+let connectorType = localStorage.getItem(connectorStorageToken) || 0;
 let sectionStatus = localStorage.getItem(sectionStorageToken) || 0;
 let emoteHidden = JSON.parse(localStorage.getItem(emoteStorageToken)) || [];
 
@@ -53,22 +62,22 @@ function setCurrentPanel(newPanel) {
 	let tmpOutput = textPrefix;
 
 	if (curPanel > 0) {
-		tmpOutput += "+ ";
+		tmpOutput += connectors[connectorType][0];
 	}
 
 	tmpOutput += textChunks[curPanel];
 
 	if (curPanel < textChunks.length - 1) {
-		tmpOutput += " +";
+		tmpOutput += connectors[connectorType][1];
 	}
 
 	outputText.value = tmpOutput;
 }
 
-function processInput(e) {
-	if (e.target.value) {
+function formatInputText(target) {
+	if (target.value) {
 		textPrefix = "/s ";
-		let inputMe = e.target.value;
+		let inputMe = target.value;
 		textChunks = [];
 
 		// Determine which slash prefix we should be using.
@@ -98,7 +107,7 @@ function processInput(e) {
 				end--;
 
 				if (end === start) {
-					end = start + 251 - textPrefix.length;
+					end = start + 253 - connectors[connectorType][0].length - textPrefix.length;
 					break;
 				}
 			}
@@ -112,7 +121,7 @@ function processInput(e) {
 				start++;
 			}
 
-			end = start + 251 - textPrefix.length;
+			end = start + 253 - connectors[connectorType][0].length - textPrefix.length;
 		}
 
 		// Finally, grab the last piece.
@@ -129,6 +138,10 @@ function processInput(e) {
 	}
 }
 
+function processInput(e) {
+	formatInputText(e.target);
+}
+
 function setDocStyle(newStyle) {
 	docStyle = newStyle;
 	document.body.className = newStyle;
@@ -139,6 +152,15 @@ function setDocStyle(newStyle) {
 	} else {
 		document.title = "Republic Equinox RP Helper";
 	}
+}
+
+function setConnectorType(e) {
+	if (e.target.selectedIndex >= 0) {
+		connectorType = e.target.selectedIndex;
+		localStorage.setItem(connectorStorageToken, connectorType);
+	}
+
+	formatInputText(inputText);
 }
 
 function initializeSections() {
@@ -199,8 +221,10 @@ function toggleEmoteType(emoteType) {
 btnStyleRepublic.addEventListener("click", () => { setDocStyle("republic") });
 btnStyleEmpire.addEventListener("click", () => { setDocStyle("empire") });
 
-inputText.addEventListener("change", processInput);
+inputText.addEventListener("change", (e) => { formatInputText(e.target) });
 
+selConnector.selectedIndex = connectorType;
+selConnector.addEventListener("change", setConnectorType);
 btnPanelBack.addEventListener("click", () => { setCurrentPanel(curPanel - 1); });
 btnPanelForward.addEventListener("click", () => { setCurrentPanel(curPanel + 1); });
 btnCopyOutput.addEventListener("click", () => { navigator.clipboard.writeText(outputText.value); });
