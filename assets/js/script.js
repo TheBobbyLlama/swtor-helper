@@ -25,6 +25,7 @@ const emoteSection = document.getElementById("emote-display");
 
 const connectors = [
 	[ "+ ", " +" ],
+	[ "- ", " -" ],
 	[ "> ", " >" ],
 	[ "|| ", " ||" ]
 ];
