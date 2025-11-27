@@ -274,6 +274,10 @@ textarea {
 	user-select: none;
 }
 
+#emote-header > *:first-child {
+	margin-right: 10px;
+}
+
 #emote-table {
 	align-items: start;
 	display: flex;
